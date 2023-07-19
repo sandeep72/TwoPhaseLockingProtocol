@@ -1,0 +1,42 @@
+********** Transactions as in given file ***********
+b1;
+r1(Y);
+w1(Y);
+r1(Z);
+b3;
+r3(X);
+w3(X);
+w1(Z);
+e1;
+r3(Y);
+b2;
+r2(Z);
+w2(Z);
+w3(Y);
+e3;
+r2(X);
+w2(X);
+e2;
+
+
+********** begin of 2Phase locking protocol ***********
+
+
+b1; T1 begins Id=1. TimeStamp: 2022-07-30 12:16:15.239. state: Active
+r1(Y); Y is read locked by T1.
+w1(Y); read lock on Y by T1 is upgraded to write lock.
+r1(Z); Z is read locked by T1.
+b3; T3 begins Id=3. TimeStamp: 2022-07-30 12:16:15.247. state: Active
+r3(X); X is read locked by T3.
+w3(X); read lock on X by T3 is upgraded to write lock.
+w1(Z); read lock on Z by T1 is upgraded to write lock.
+e1; T1 is Committed.
+r3(Y); Y is read locked by T3.
+b2; T2 begins Id=2. TimeStamp: 2022-07-30 12:16:15.248. state: Active
+r2(Z); Z is read locked by T2.
+w2(Z); read lock on Z by T2 is upgraded to write lock.
+w3(Y); read lock on Y by T3 is upgraded to write lock.
+e3; T3 is Committed.
+r2(X); X is read locked by T2.
+w2(X); read lock on X by T2 is upgraded to write lock.
+e2; T2 is Committed.
